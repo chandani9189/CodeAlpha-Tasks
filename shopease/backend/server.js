@@ -14,11 +14,7 @@ connectDB();
 
 const app = express();
 
-// Allow all origins
-app.use(cors({
-  origin: '*',
-  credentials: false,
-}));
+app.use(cors());
 
 app.use(express.json());
 
