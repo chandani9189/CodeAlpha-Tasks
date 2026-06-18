@@ -40,7 +40,7 @@ export default function Cart() {
   };
 
   return (
-    <div className="min-h-screen bg-white px-8 py-6">
+    <div className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 py-6">
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Your Shopping Cart</h1>
 
       {loading && items.length === 0 ? (
@@ -57,10 +57,10 @@ export default function Cart() {
           </Link>
         </div>
       ) : (
-        <div className="flex gap-8">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items */}
-          <div className="flex-1">
-            <div className="grid grid-cols-4 text-sm text-gray-500 pb-3 border-b border-gray-100">
+          <div className="flex-1 min-w-0">
+            <div className="hidden md:grid grid-cols-4 text-sm text-gray-500 pb-3 border-b border-gray-100">
               <p>Product</p>
               <p className="text-center">Price</p>
               <p className="text-center">Quantity</p>
@@ -69,7 +69,7 @@ export default function Cart() {
 
             <div className="space-y-4 mt-4">
               {items.map((item) => (
-                <div key={item._id} className="grid grid-cols-4 items-center py-4 border-b border-gray-100">
+                <div key={item._id} className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 items-center py-4 border-b border-gray-100">
                   {/* Product */}
                   <div className="flex items-center gap-4">
                     <img src={item.product?.image} alt={item.product?.name}
@@ -86,10 +86,13 @@ export default function Cart() {
                   </div>
 
                   {/* Price */}
-                  <p className="text-center font-medium text-gray-900">₹{item.product?.price}</p>
+                  <p className="md:text-center font-medium text-gray-900">
+                    <span className="md:hidden text-xs text-gray-400 mr-2">Price</span>
+                    ₹{item.product?.price}
+                  </p>
 
                   {/* Quantity — instant update, no loading */}
-                  <div className="flex items-center justify-center gap-3">
+                  <div className="flex items-center md:justify-center gap-3">
                     <button onClick={() => handleQuantity(item, -1)}
                       className="w-7 h-7 rounded-full border border-gray-300 text-gray-600 hover:border-green-600 hover:text-green-600 transition text-sm">
                       −
@@ -102,7 +105,8 @@ export default function Cart() {
                   </div>
 
                   {/* Subtotal */}
-                  <p className="text-right font-bold text-gray-900">
+                  <p className="md:text-right font-bold text-gray-900">
+                    <span className="md:hidden text-xs font-medium text-gray-400 mr-2">Subtotal</span>
                     ₹{((item.product?.price || 0) * item.quantity).toFixed(2)}
                   </p>
                 </div>
@@ -116,14 +120,14 @@ export default function Cart() {
             </div>
 
             {/* Features */}
-            <div className="grid grid-cols-4 border border-gray-200 rounded-xl mt-8 overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 border border-gray-200 rounded-xl mt-8 overflow-hidden">
               {[
                 { icon: faTruck, title: 'Free Shipping', desc: 'On orders over ₹300' },
                 { icon: faRotateLeft, title: 'Easy Returns', desc: '7 days return policy' },
                 { icon: faLock, title: 'Secure Payment', desc: '100% secure payment' },
                 { icon: faHeadset, title: '24/7 Support', desc: 'Dedicated support' },
               ].map((f, i) => (
-                <div key={i} className={`flex items-center gap-3 py-4 px-4 ${i < 3 ? 'border-r border-gray-200' : ''}`}>
+                <div key={i} className="flex items-center gap-3 py-4 px-4 border-b sm:border-r border-gray-200 last:border-b-0">
                   <div className="bg-green-50 p-2.5 rounded-full flex-shrink-0">
                     <FontAwesomeIcon icon={f.icon} className="text-green-600 text-sm" />
                   </div>
@@ -137,7 +141,7 @@ export default function Cart() {
           </div>
 
           {/* Order Summary */}
-          <div className="w-72 flex-shrink-0">
+          <div className="w-full lg:w-72 lg:flex-shrink-0">
             <div className="border border-gray-200 rounded-xl p-5 sticky top-32">
               <h3 className="font-bold text-gray-900 mb-4">Order Summary</h3>
 

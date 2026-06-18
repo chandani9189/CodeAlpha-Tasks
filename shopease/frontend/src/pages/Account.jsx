@@ -135,10 +135,10 @@ export default function Account() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 px-8 py-6">
-      <div className="flex gap-6">
+    <div className="min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8 py-6">
+      <div className="flex flex-col lg:flex-row gap-6">
         {/* Sidebar */}
-        <aside className="w-56 flex-shrink-0 space-y-4">
+        <aside className="w-full lg:w-56 lg:flex-shrink-0 space-y-4">
           <div className="bg-white rounded-xl overflow-hidden border border-gray-100">
             <div className="px-4 py-3 border-b border-gray-100">
               <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">Account Menu</p>
@@ -177,7 +177,7 @@ export default function Account() {
         </aside>
 
         {/* Main */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <p className="text-sm text-gray-400 mb-4">
             <Link to="/" className="hover:text-green-600">Home</Link>
             <span className="mx-2">›</span>
@@ -190,7 +190,7 @@ export default function Account() {
           {/* Dashboard */}
           {active === 'dashboard' && (
             <div>
-              <div className="grid grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
                 {[
                   { icon: faBoxOpen, label: 'Total Orders', value: orders.length, link: 'View all orders', key: 'orders', bg: 'bg-green-50', color: 'text-green-600' },
                   { icon: faHeart, label: 'Wishlist Items', value: wishlistCount, link: 'View wishlist', key: 'wishlist', bg: 'bg-pink-50', color: 'text-pink-500' },
@@ -210,7 +210,7 @@ export default function Account() {
                 ))}
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                 <div className="bg-white border border-gray-100 rounded-xl p-5">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="font-bold text-gray-900">Recent Orders</h3>
@@ -225,7 +225,7 @@ export default function Account() {
                           className="w-full flex items-center gap-3 hover:bg-gray-50 rounded-xl p-2 transition">
                           <img src={order.items?.[0]?.product?.image} alt=""
                             className="w-12 h-12 object-cover rounded-lg bg-gray-50 flex-shrink-0" />
-                          <div className="flex-1 text-left">
+                          <div className="flex-1 min-w-0 text-left">
                             <p className="text-sm font-medium text-gray-800">Order #{order._id.slice(-6).toUpperCase()}</p>
                             <p className="text-xs text-gray-400">{new Date(order.createdAt).toLocaleDateString('en-IN')}</p>
                           </div>
@@ -273,7 +273,7 @@ export default function Account() {
 
               <div className="bg-white border border-gray-100 rounded-xl p-5 mt-6">
                 <h3 className="font-bold text-gray-900 mb-4">Quick Links</h3>
-                <div className="grid grid-cols-5 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
                   {menuItems.map((item) => (
                     <button key={item.key} onClick={() => setActive(item.key)}
                       className="flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition">
@@ -299,7 +299,7 @@ export default function Account() {
           {active === 'profile' && (
             <div className="bg-white border border-gray-100 rounded-xl p-5">
               <h3 className="font-bold text-gray-900 mb-5">Profile Details</h3>
-              <div className="grid grid-cols-2 gap-5 max-w-2xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl">
                 <div>
                   <label className="text-sm font-medium text-gray-700 mb-1 block">Full Name</label>
                   <input value={profileForm.name}
@@ -328,7 +328,7 @@ export default function Account() {
                 ) : (
                   <div className="space-y-2 mb-3">
                     {addresses.map((addr, i) => (
-                      <div key={i} className="border border-gray-100 rounded-xl p-3 flex justify-between items-start">
+                      <div key={i} className="border border-gray-100 rounded-xl p-3 flex gap-3 justify-between items-start">
                         <div className="text-sm text-gray-600">
                           <p className="font-medium text-gray-800">{addr.fullName}</p>
                           <p>{addr.street}, {addr.city}, {addr.state} — {addr.pincode}</p>
@@ -400,7 +400,7 @@ export default function Account() {
               {showAddForm && (
                 <div className="border border-green-100 bg-green-50 rounded-xl p-4 mb-5">
                   <h4 className="font-semibold text-gray-800 mb-4 text-sm">New Address</h4>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="text-xs font-medium text-gray-600 mb-1 block">Full Name *</label>
                       <input value={addressForm.fullName}
@@ -415,7 +415,7 @@ export default function Account() {
                         placeholder="+91 XXXXX XXXXX"
                         className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-green-500 bg-white" />
                     </div>
-                    <div className="col-span-2">
+                    <div className="sm:col-span-2">
                       <label className="text-xs font-medium text-gray-600 mb-1 block">Street Address *</label>
                       <input value={addressForm.street}
                         onChange={(e) => setAddressForm({ ...addressForm, street: e.target.value })}
@@ -461,12 +461,12 @@ export default function Account() {
               ) : (
                 <div className="space-y-3">
                   {addresses.map((addr, i) => (
-                    <div key={i} className="border border-gray-100 rounded-xl p-4 flex justify-between items-start hover:shadow-sm transition">
+                    <div key={i} className="border border-gray-100 rounded-xl p-4 flex gap-3 justify-between items-start hover:shadow-sm transition">
                       <div className="flex gap-3">
                         <div className="bg-green-50 w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                           <FontAwesomeIcon icon={faLocationDot} className="text-green-600 text-sm" />
                         </div>
-                        <div className="text-sm">
+                        <div className="text-sm min-w-0">
                           <p className="font-semibold text-gray-900">{addr.fullName}</p>
                           <p className="text-gray-500 mt-0.5">{addr.street}</p>
                           <p className="text-gray-500">{addr.city}{addr.state ? `, ${addr.state}` : ''} — {addr.pincode}</p>

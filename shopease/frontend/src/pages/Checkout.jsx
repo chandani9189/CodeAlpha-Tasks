@@ -323,7 +323,7 @@ export default function Checkout() {
   // MAIN CHECKOUT
   // ════════════════════════════════════════════════════════════════════════════
   return (
-    <div className="min-h-screen bg-gray-50 px-8 py-6">
+    <div className="min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8 py-6">
 
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
@@ -337,9 +337,9 @@ export default function Checkout() {
       </div>
 
       {/* Steps */}
-      <div className="flex items-center gap-3 mb-8">
+      <div className="flex items-center gap-3 mb-8 overflow-x-auto pb-1">
         {[{ n:1, label:'Delivery Address' },{ n:2, label:'Review & Pay' }].map((s, i) => (
-          <div key={s.n} className="flex items-center gap-2">
+          <div key={s.n} className="flex items-center gap-2 flex-shrink-0">
             <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
               step >= s.n ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-500'
             }`}>
@@ -353,10 +353,10 @@ export default function Checkout() {
         ))}
       </div>
 
-      <div className="flex gap-8">
+      <div className="flex flex-col lg:flex-row gap-8">
 
         {/* ── LEFT ── */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
 
           {/* ───── STEP 1: Address ───── */}
           {step === 1 && (
@@ -378,7 +378,7 @@ export default function Checkout() {
                           : 'border-gray-100 hover:border-gray-300'
                       }`}
                     >
-                      <div className="flex gap-3">
+                      <div className="flex gap-3 min-w-0">
                         <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 flex-shrink-0 ${
                           selectedAddr === i && !showNewForm
                             ? 'border-green-600 bg-green-600'
@@ -388,7 +388,7 @@ export default function Checkout() {
                             <FontAwesomeIcon icon={faCheck} className="text-white text-[8px]" />
                           )}
                         </div>
-                        <div className="text-sm">
+                        <div className="text-sm min-w-0">
                           <p className="font-semibold text-gray-900">{addr.fullName}</p>
                           <p className="text-gray-500 mt-0.5">{addr.street}</p>
                           <p className="text-gray-500">
@@ -413,7 +413,7 @@ export default function Checkout() {
               ) : (
                 <div className="border border-gray-200 rounded-xl p-4 mt-2">
                   <p className="text-sm font-semibold text-gray-700 mb-3">New Delivery Address</p>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {[
                       { name:'fullName', label:'Full Name *',  placeholder:'Enter full name',     col:1 },
                       { name:'phone',    label:'Phone *',      placeholder:'10-digit mobile no.', col:1 },
@@ -427,7 +427,7 @@ export default function Checkout() {
                         />
                       </div>
                     ))}
-                    <div className="col-span-2">
+                    <div className="sm:col-span-2">
                       <label className="text-xs font-medium text-gray-600 mb-1 block">Street Address *</label>
                       <input
                         name="street" value={addrForm.street}
@@ -468,7 +468,7 @@ export default function Checkout() {
                     <p className="mt-3 text-xs text-red-500 font-medium">{addrError}</p>
                   )}
 
-                  <div className="flex gap-2 mt-4">
+                  <div className="flex flex-col sm:flex-row gap-2 mt-4">
                     <button
                       onClick={handleSaveNewAddr}
                       disabled={loading}
@@ -506,7 +506,7 @@ export default function Checkout() {
 
               {/* Delivering to */}
               <div className="bg-white rounded-xl border border-gray-100 p-5">
-                <div className="flex justify-between items-center mb-3">
+                <div className="flex justify-between items-center gap-3 mb-3">
                   <h3 className="font-bold text-gray-900 flex items-center gap-2">
                     <FontAwesomeIcon icon={faLocationDot} className="text-green-600" />
                     Delivering To
@@ -535,13 +535,13 @@ export default function Checkout() {
                 ) : (
                   <div className="space-y-3">
                     {items.map((item, i) => (
-                      <div key={i} className="flex items-center gap-4">
+                      <div key={i} className="flex items-center gap-3 sm:gap-4">
                         <img
                           src={item.product?.image} alt={item.product?.name}
                           className="w-16 h-16 object-cover rounded-xl bg-gray-50 flex-shrink-0"
                           onError={(e) => { e.target.src = '/placeholder.png'; }}
                         />
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                           <p className="font-medium text-gray-900 text-sm">{item.product?.name}</p>
                           <p className="text-xs text-gray-400 mt-0.5">
                             {item.size  && `Size: ${item.size}`}
@@ -608,8 +608,8 @@ export default function Checkout() {
                 {/* Card input */}
                 {paymentMethod === 'card' && (
                   <div className="mt-4 border border-gray-200 rounded-xl p-4">
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="col-span-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="sm:col-span-2">
                         <label className="text-xs font-medium text-gray-600 mb-1 block">Card Number *</label>
                         <input
                           value={cardForm.number}
@@ -619,7 +619,7 @@ export default function Checkout() {
                           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-green-500 font-mono tracking-widest"
                         />
                       </div>
-                      <div className="col-span-2">
+                      <div className="sm:col-span-2">
                         <label className="text-xs font-medium text-gray-600 mb-1 block">Name on Card *</label>
                         <input
                           value={cardForm.name}
@@ -679,7 +679,7 @@ export default function Checkout() {
         </div>
 
         {/* ── RIGHT — Sidebar ── */}
-        <div className="w-72 flex-shrink-0">
+        <div className="w-full lg:w-72 lg:flex-shrink-0">
           <div className="bg-white rounded-xl border border-gray-100 p-5 sticky top-32">
             <h3 className="font-bold text-gray-900 mb-4">Order Summary</h3>
 

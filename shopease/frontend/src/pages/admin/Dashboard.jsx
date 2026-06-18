@@ -106,9 +106,9 @@ export default function Dashboard() {
   const sections = [...new Set(menuItems.map((i) => i.section))];
 
   return (
-    <div className="flex h-screen bg-gray-100 overflow-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen lg:h-screen bg-gray-100 overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-56 bg-gray-900 flex flex-col flex-shrink-0">
+      <aside className="w-full lg:w-56 bg-gray-900 flex flex-col lg:flex-shrink-0">
         {/* Logo */}
         <div className="px-5 py-5 border-b border-gray-700">
           <p className="text-xl font-bold">
@@ -130,7 +130,7 @@ export default function Dashboard() {
         </div>
 
         {/* Menu */}
-        <nav className="flex-1 overflow-y-auto py-3">
+        <nav className="flex-1 overflow-x-auto lg:overflow-y-auto py-3">
           {sections.map((section) => (
             <div key={section} className="mb-2">
               {section && (
@@ -171,9 +171,9 @@ export default function Dashboard() {
       </aside>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
         {/* Top bar */}
-        <div className="bg-white border-b px-6 py-3 flex justify-between items-center flex-shrink-0">
+        <div className="bg-white border-b px-4 sm:px-6 py-3 flex flex-col sm:flex-row gap-3 justify-between sm:items-center flex-shrink-0">
           <div>
             <h1 className="text-xl font-bold text-gray-900 capitalize">
               {active === "dashboard"
@@ -194,7 +194,7 @@ export default function Dashboard() {
               </p>
             )}
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <button className="relative text-gray-500 hover:text-green-600">
               <FontAwesomeIcon icon={faBell} className="text-xl" />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center">
@@ -215,12 +215,12 @@ export default function Dashboard() {
         </div>
 
         {/* Page content */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6">
           {/* Dashboard */}
           {active === "dashboard" && (
             <div>
               {/* Stats */}
-              <div className="grid grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
                 {[
                   {
                     label: "Total Products",
@@ -280,9 +280,9 @@ export default function Dashboard() {
                 ))}
               </div>
 
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                 {/* Recent Orders */}
-                <div className="col-span-2 bg-white rounded-xl border border-gray-100 p-5">
+                <div className="xl:col-span-2 bg-white rounded-xl border border-gray-100 p-5 overflow-x-auto">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="font-bold text-gray-900">Recent Orders</h3>
                     <button
@@ -385,7 +385,7 @@ export default function Dashboard() {
               </div>
 
               {/* Quick Actions */}
-              <div className="grid grid-cols-3 gap-4 mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                 {[
                   {
                     label: "Add Product",

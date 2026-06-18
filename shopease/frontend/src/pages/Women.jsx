@@ -98,7 +98,7 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="px-8 pt-5 pb-2">
+      <div className="px-4 sm:px-6 lg:px-8 pt-5 pb-2">
         <h1 className="text-2xl font-bold text-gray-900">Women</h1>
         <p className="text-sm text-gray-400 mt-1">
           <Link to="/" className="hover:text-green-600">Home</Link>
@@ -113,9 +113,9 @@ useEffect(() => {
         </p>
       </div>
 
-      <div className="flex px-8 pb-10 gap-6 mt-4">
+      <div className="flex flex-col lg:flex-row px-4 sm:px-6 lg:px-8 pb-10 gap-6 mt-4">
         {/* Sidebar */}
-        <aside className="w-52 flex-shrink-0">
+        <aside className="w-full lg:w-52 lg:flex-shrink-0">
           <div className="mb-6">
             <h3 className="font-semibold text-gray-800 mb-3">Categories</h3>
             <ul className="space-y-1">
@@ -203,7 +203,7 @@ useEffect(() => {
         </aside>
 
         {/* Main content */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           {loading ? (
             <div className="flex items-center justify-center h-64">
               <p className="text-gray-400">Loading products...</p>
@@ -233,7 +233,7 @@ useEffect(() => {
                     >← Back</button>
                   )}
                 </div>
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
                   {(viewAllSub ? items : items.slice(0, 4)).map((product) => (
                     <ProductCard key={product._id} product={product} />
                   ))}

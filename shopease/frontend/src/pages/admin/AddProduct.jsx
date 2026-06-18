@@ -94,14 +94,14 @@ const getSizes = (sub) => {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-100 p-6">
+    <div className="bg-white rounded-xl border border-gray-100 p-4 sm:p-6">
       <h3 className="font-bold text-gray-900 mb-5">Add New Product</h3>
 
       {error && (
         <div className="bg-red-50 text-red-600 text-sm px-4 py-2 rounded-lg mb-4">{error}</div>
       )}
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-5">
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* Left */}
         <div className="space-y-4">
           {/* Name */}
@@ -113,7 +113,7 @@ const getSizes = (sub) => {
           </div>
 
           {/* Price */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="text-sm font-medium text-gray-700 mb-1 block">Price (₹)</label>
               <input name="price" value={form.price} onChange={handleChange} required type="number"
@@ -129,7 +129,7 @@ const getSizes = (sub) => {
           </div>
 
           {/* Category */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="text-sm font-medium text-gray-700 mb-1 block">Category</label>
               <select name="category" value={form.category}
@@ -217,7 +217,7 @@ const getSizes = (sub) => {
 
           {/* Image previews */}
           {images.length > 0 && (
-            <div className="mt-3 grid grid-cols-3 gap-2">
+            <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
               {images.map((img, index) => (
                 <div key={index} className="relative group rounded-lg overflow-hidden border border-gray-200">
                   <img src={img.preview} alt={`img-${index}`}
@@ -249,7 +249,7 @@ const getSizes = (sub) => {
         </div>
 
         {/* Submit */}
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           <button type="submit" disabled={loading}
             className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition disabled:opacity-50">
             {loading ? 'Adding Product...' : 'Add Product'}

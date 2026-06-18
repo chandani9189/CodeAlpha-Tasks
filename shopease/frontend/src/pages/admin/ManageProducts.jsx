@@ -142,7 +142,8 @@ export default function ManageProducts() {
       ) : products.length === 0 ? (
         <p className="text-gray-400 text-sm text-center py-10">No products added yet</p>
       ) : (
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[720px] text-sm">
           <thead>
             <tr className="text-gray-400 text-xs border-b border-gray-100">
               <th className="text-left pb-3">Product</th>
@@ -193,6 +194,7 @@ export default function ManageProducts() {
             ))}
           </tbody>
         </table>
+        </div>
       )}
 
       {/* ── DELETE CONFIRM DIALOG ── */}
@@ -238,7 +240,7 @@ export default function ManageProducts() {
                 <div className="bg-red-50 text-red-600 text-sm px-4 py-2 rounded-lg mb-4">{editError}</div>
               )}
 
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {/* Left */}
                 <div className="space-y-4">
                   {/* Name */}
@@ -249,7 +251,7 @@ export default function ManageProducts() {
                   </div>
 
                   {/* Price */}
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="text-sm font-medium text-gray-700 mb-1 block">Price (₹)</label>
                       <input name="price" value={editForm.price} onChange={handleEditChange} type="number" required
@@ -263,7 +265,7 @@ export default function ManageProducts() {
                   </div>
 
                   {/* Category */}
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="text-sm font-medium text-gray-700 mb-1 block">Category</label>
                       <select name="category" value={editForm.category}

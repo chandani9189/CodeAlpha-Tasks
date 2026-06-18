@@ -28,7 +28,8 @@ export default function ManageUsers() {
       ) : users.length === 0 ? (
         <p className="text-gray-400 text-sm text-center py-10">No users yet</p>
       ) : (
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[560px] text-sm">
           <thead>
             <tr className="text-gray-400 text-xs border-b border-gray-100">
               <th className="text-left pb-3">Name</th>
@@ -54,6 +55,7 @@ export default function ManageUsers() {
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   );

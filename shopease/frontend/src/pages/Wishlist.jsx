@@ -57,9 +57,9 @@ export default function Wishlist() {
   };
 
   return (
-    <div className="min-h-screen bg-white px-8 py-6">
+    <div className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 py-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row gap-3 sm:justify-between sm:items-center mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
             My Wishlist ({items.length})
@@ -95,14 +95,14 @@ export default function Wishlist() {
             const adding = addingToCart[product._id];
             return (
               <div key={product._id}
-                className="flex items-center gap-6 border border-gray-100 rounded-xl p-4 hover:shadow-sm transition">
+                className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 border border-gray-100 rounded-xl p-4 hover:shadow-sm transition">
                 {/* Image */}
                 <img src={product.image} alt={product.name}
-                  className="w-24 h-24 object-cover rounded-xl bg-gray-50 flex-shrink-0 cursor-pointer"
+                  className="w-full sm:w-24 h-48 sm:h-24 object-cover rounded-xl bg-gray-50 flex-shrink-0 cursor-pointer"
                   onClick={() => navigate(`/product/${product._id}`)} />
 
                 {/* Info */}
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="font-semibold text-gray-900 cursor-pointer hover:text-green-600 transition"
                     onClick={() => navigate(`/product/${product._id}`)}>
                     {product.name}
@@ -114,7 +114,7 @@ export default function Wishlist() {
                 </div>
 
                 {/* Price */}
-                <div className="text-right mr-8">
+                <div className="sm:text-right sm:mr-8">
                   <p className="font-bold text-gray-900">₹{product.price}</p>
                   {product.originalPrice > product.price && (
                     <p className="text-xs text-gray-400 line-through">₹{product.originalPrice}</p>
@@ -123,11 +123,11 @@ export default function Wishlist() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 w-full sm:w-auto">
                   <button
                     onClick={() => handleAddToCart(product)}
                     disabled={inCart || adding}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    className={`flex flex-1 sm:flex-none items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                       inCart
                         ? 'bg-green-100 text-green-600 border border-green-400 opacity-60 cursor-not-allowed'
                         : 'border border-gray-300 text-gray-700 hover:border-green-600 hover:text-green-600'
@@ -151,14 +151,14 @@ export default function Wishlist() {
 
       {/* Features — with icons like Home page */}
       {items.length > 0 && (
-        <div className="grid grid-cols-4 border border-gray-200 rounded-xl mt-10 overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 border border-gray-200 rounded-xl mt-10 overflow-hidden">
           {[
             { icon: faTruck, title: 'Free Shipping', desc: 'On orders over ₹300' },
             { icon: faRotateLeft, title: 'Easy Returns', desc: '7 days return policy' },
             { icon: faLock, title: 'Secure Payment', desc: '100% secure payment' },
             { icon: faHeadset, title: '24/7 Support', desc: 'Dedicated support' },
           ].map((f, i) => (
-            <div key={i} className={`flex items-center gap-3 py-4 px-6 ${i < 3 ? 'border-r border-gray-200' : ''}`}>
+            <div key={i} className="flex items-center gap-3 py-4 px-6 border-b sm:border-r border-gray-200 last:border-b-0">
               <div className="bg-green-50 p-2.5 rounded-full flex-shrink-0">
                 <FontAwesomeIcon icon={f.icon} className="text-green-600 text-sm" />
               </div>

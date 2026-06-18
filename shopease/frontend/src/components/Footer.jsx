@@ -6,7 +6,7 @@ import { faFacebook, faInstagram, faTwitter, faPinterest, faCcVisa, faCcMasterca
 export default function Footer() {
   return (
     <footer className="bg-white border-t mt-10">
-      <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
         {/* Brand */}
         <div>
           <Link to="/" className="flex items-center gap-1.5 text-xl font-bold">
@@ -77,10 +77,10 @@ export default function Footer() {
       </div>
 
       {/* Bottom */}
-      <div className="border-t px-8 py-4 flex justify-between items-center">
+      <div className="border-t px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row gap-3 justify-between items-center text-center sm:text-left">
         <p className="text-sm text-gray-500">© 2024 ShopEase. All rights reserved.</p>
         {/* Font Awesome payment icons */}
-        <div className="flex items-center gap-3 text-4xl">
+        <div className="flex items-center gap-3 text-3xl sm:text-4xl">
           <FontAwesomeIcon icon={faCcVisa} className="text-blue-700" />
           <FontAwesomeIcon icon={faCcMastercard} className="text-red-500" />
           <FontAwesomeIcon icon={faCcAmex} className="text-blue-500" />

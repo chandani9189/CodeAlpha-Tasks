@@ -104,7 +104,7 @@ export default function ProductDetail() {
   const allImages = getAllImages();
 
   return (
-    <div className="min-h-screen bg-white px-8 py-6">
+    <div className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 py-6">
       {/* Back + Breadcrumb */}
       <div className="flex items-center gap-3 mb-6">
         <button onClick={() => navigate(-1)}
@@ -122,11 +122,11 @@ export default function ProductDetail() {
         </p>
       </div>
 
-      <div className="flex gap-10">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
         {/* Image Gallery */}
-        <div className="w-96 flex-shrink-0">
+        <div className="w-full lg:w-96 lg:flex-shrink-0">
           {/* Main image with arrows */}
-          <div className="relative bg-gray-50 rounded-2xl overflow-hidden h-96 group">
+          <div className="relative bg-gray-50 rounded-2xl overflow-hidden h-80 sm:h-96 group">
             <img
               src={allImages[activeImg]}
               alt={product.name}
@@ -177,15 +177,15 @@ export default function ProductDetail() {
         </div>
 
         {/* Product Info */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <p className="text-xs text-green-600 font-semibold uppercase tracking-wide mb-1">
             {product.category} — {product.subCategory}
           </p>
           <h1 className="text-2xl font-bold text-gray-900 mb-3">{product.name}</h1>
 
           {/* Price */}
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-3xl font-bold text-gray-900">₹{product.price}</span>
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
+            <span className="text-2xl sm:text-3xl font-bold text-gray-900">₹{product.price}</span>
             {product.originalPrice > product.price && (
               <>
                 <span className="text-lg text-gray-400 line-through">₹{product.originalPrice}</span>

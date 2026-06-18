@@ -25,7 +25,7 @@ export default function ProductCard({ product }) {
   return (
     <div
       onClick={() => navigate(`/product/${product._id}`)}
-      className="group relative bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition cursor-pointer"
+      className="group relative bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition cursor-pointer min-w-0"
     >
       {/* Wishlist button */}
       <button onClick={handleWishlist}
@@ -44,7 +44,7 @@ export default function ProductCard({ product }) {
       )}
 
       {/* Image */}
-      <div className="bg-gray-50 h-56 overflow-hidden">
+      <div className="bg-gray-50 h-44 sm:h-56 overflow-hidden">
         <img src={product.image} alt={product.name}
           className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
       </div>
@@ -60,7 +60,7 @@ export default function ProductCard({ product }) {
           )}
         </div>
         {/* Hover hint */}
-        <p className="text-[15px] text-gray-400 mt-1 group-hover:text-green-600 transition">
+        <p className="text-xs sm:text-[15px] text-gray-400 mt-1 group-hover:text-green-600 transition">
           Click to view details →
         </p>
       </div>

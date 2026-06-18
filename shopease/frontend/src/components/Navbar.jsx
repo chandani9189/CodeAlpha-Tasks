@@ -74,12 +74,12 @@ export default function Navbar() {
       )}
 
       {/* Top bar */}
-      <div className="bg-gray-900 text-white text-xs px-8 py-2 flex justify-between items-center">
+      <div className="bg-gray-900 text-white text-xs px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row gap-2 sm:gap-0 justify-between items-center text-center sm:text-left">
         <div className="flex items-center gap-2">
           <FontAwesomeIcon icon={faTruck} />
           <span>Free shipping on orders over ₹300</span>
         </div>
-        <div className="flex gap-4">
+        <div className="hidden sm:flex gap-4">
           <Link to="/help" className="hover:text-green-400">Help &amp; Support</Link>
           <span className="text-gray-500">|</span>
           <Link to="/track-order" className="hover:text-green-400">Track Order</Link>
@@ -87,9 +87,9 @@ export default function Navbar() {
       </div>
 
       {/* Main navbar */}
-      <div className="bg-white px-8 py-4 flex items-center gap-6">
+      <div className="bg-white px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap lg:flex-nowrap items-center gap-3 lg:gap-6">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-1.5 text-2xl font-bold flex-shrink-0 mr-2">
+        <Link to="/" className="flex items-center gap-1.5 text-xl sm:text-2xl font-bold flex-shrink-0 mr-auto lg:mr-2">
           <div className="bg-green-600 text-white p-1.5 rounded-md">
             <FontAwesomeIcon icon={faShoppingCart} className="text-sm" />
           </div>
@@ -98,21 +98,21 @@ export default function Navbar() {
         </Link>
 
         {/* Search */}
-        <form onSubmit={handleSearch} className="flex-1 flex items-center border border-gray-300 rounded-lg overflow-hidden">
+        <form onSubmit={handleSearch} className="order-3 lg:order-none w-full lg:w-auto lg:flex-1 flex items-center border border-gray-300 rounded-lg overflow-hidden">
           <input
             type="text"
             placeholder="Search products, e.g. men shirts, women shoes..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 px-4 py-2.5 text-sm outline-none text-gray-600"
+            className="min-w-0 flex-1 px-3 sm:px-4 py-2.5 text-sm outline-none text-gray-600"
           />
-          <button type="submit" className="bg-green-600 px-5 py-2.5 text-white hover:bg-green-700 transition">
+          <button type="submit" className="bg-green-600 px-4 sm:px-5 py-2.5 text-white hover:bg-green-700 transition flex-shrink-0">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </form>
 
         {/* Right icons */}
-        <div className="flex items-center gap-7 ml-2">
+        <div className="flex items-center gap-4 sm:gap-6 lg:gap-7 ml-0 lg:ml-2">
 
           {/* Account */}
           <div className="relative z-50">
@@ -120,7 +120,7 @@ export default function Navbar() {
               onClick={() => setShowDropdown(!showDropdown)}
               className="flex items-center gap-2.5 text-gray-600 hover:text-green-600 transition">
               <FontAwesomeIcon icon={faUser} className="text-xl text-gray-500" />
-              <div className="text-left">
+              <div className="hidden sm:block text-left">
                 <p className="text-xs text-gray-400 leading-none">Account</p>
                 <p className="text-sm font-semibold text-gray-800 leading-tight">
                   {user ? user.name.split(' ')[0] : 'Sign in'}
@@ -175,7 +175,7 @@ export default function Navbar() {
                 {wishlistItems?.length || 0}
               </span>
             </div>
-            <div className="text-left">
+            <div className="hidden sm:block text-left">
               <p className="text-xs text-gray-400 leading-none">My</p>
               <p className="text-sm font-semibold text-gray-800 leading-tight">Wishlist</p>
             </div>
@@ -189,7 +189,7 @@ export default function Navbar() {
                 {cartItems?.length || 0}
               </span>
             </div>
-            <div className="text-left">
+            <div className="hidden sm:block text-left">
               <p className="text-xs text-gray-400 leading-none">My</p>
               <p className="text-sm font-semibold text-gray-800 leading-tight">Cart</p>
             </div>
@@ -198,7 +198,7 @@ export default function Navbar() {
       </div>
 
       {/* Nav links — same as original */}
-      <div className="bg-white px-8 flex gap-8 text-sm">
+      <div className="bg-white px-4 sm:px-6 lg:px-8 flex gap-6 sm:gap-8 text-sm overflow-x-auto">
         {navLinks.map((link) => (
           <Link
             key={link.path}

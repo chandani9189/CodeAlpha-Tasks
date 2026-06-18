@@ -42,7 +42,8 @@ export default function ManageOrders() {
       ) : orders.length === 0 ? (
         <p className="text-gray-400 text-sm text-center py-10">No orders yet</p>
       ) : (
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[720px] text-sm">
           <thead>
             <tr className="text-gray-400 text-xs border-b border-gray-100">
               <th className="text-left pb-3">Order ID</th>
@@ -78,6 +79,7 @@ export default function ManageOrders() {
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   );

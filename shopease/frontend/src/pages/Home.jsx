@@ -100,16 +100,16 @@ export default function Home() {
 
       {/* ── Hero Banner ── */}
       <section
-        className="mx-6 mt-4 rounded-2xl overflow-hidden bg-gray-50 relative min-h-[340px] flex items-center"
+        className="mx-4 sm:mx-6 mt-4 rounded-2xl overflow-hidden bg-gray-50 relative min-h-[420px] sm:min-h-[340px] flex items-start sm:items-center"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
         {/* Text content */}
-        <div key={`text-${slide}`} className="px-12 py-10 z-10 relative max-w-lg animate-fadeIn">
+        <div key={`text-${slide}`} className="px-5 sm:px-8 lg:px-12 py-8 sm:py-10 z-10 relative max-w-lg animate-fadeIn">
           <p className="text-green-600 text-xs font-bold tracking-widest mb-3">
             {slides[slide].tag}
           </p>
-          <h1 className="text-4xl font-extrabold text-gray-900 leading-tight whitespace-pre-line mb-3">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight whitespace-pre-line mb-3">
             {slides[slide].title}
           </h1>
           <p className="text-gray-500 text-sm mb-7">{slides[slide].desc}</p>
@@ -135,13 +135,13 @@ export default function Home() {
         </div>
 
         {/* Right image */}
-        <div className="absolute right-0 top-0 h-full w-[55%] flex items-center justify-end pr-8">
-          <div className="absolute right-6 w-80 h-80 bg-gray-200 rounded-full" />
+        <div className="absolute right-0 bottom-0 sm:top-0 h-52 sm:h-full w-full sm:w-[55%] flex items-end sm:items-center justify-end pr-0 sm:pr-8 opacity-80 sm:opacity-100">
+          <div className="hidden sm:block absolute right-6 w-80 h-80 bg-gray-200 rounded-full" />
           <img
             key={`img-${slide}`}
             src={slides[slide].img}
             alt="banner"
-            className="relative z-10 h-80 w-full object-cover object-top animate-fadeIn"
+            className="relative z-10 h-full sm:h-80 w-full object-cover object-top animate-fadeIn"
           />
         </div>
 
@@ -154,7 +154,7 @@ export default function Home() {
       </section>
 
       {/* ── Features ── */}
-      <section className="mx-6 mt-6 grid grid-cols-2 md:grid-cols-4">
+      <section className="mx-4 sm:mx-6 mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {features.map((f, i) => (
           <div
             key={i}
@@ -175,10 +175,10 @@ export default function Home() {
       </section>
 
       {/* ── Featured Categories — no "Shop Now", direct navigate on click ── */}
-      <section className="mx-6 mt-10 mb-10">
+      <section className="mx-4 sm:mx-6 mt-10 mb-10">
         <h2 className="text-xl font-bold text-gray-900 mb-5">Featured Categories</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {categories.map((cat, i) => (
             <div
               key={i}
